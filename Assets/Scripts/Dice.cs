@@ -12,4 +12,8 @@ public class Dice : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public int roll(){
+
+	}
 }
