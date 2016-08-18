@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Dice : MonoBehaviour {
 
+public class Dice : MonoBehaviour {
+	
 	// Use this for initialization
 	void Start () {
-	
+		roll ();
 	}
 	
 	// Update is called once per frame
@@ -13,7 +14,8 @@ public class Dice : MonoBehaviour {
 	
 	}
 
-	public int roll(){
+	public void roll(){
 
+		Debug.Log (Random.Range (1, 7));
 	}
 }
