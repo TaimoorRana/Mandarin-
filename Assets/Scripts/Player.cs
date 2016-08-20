@@ -8,7 +8,6 @@ public class Player : MonoBehaviour {
 	Vector3 velocity = Vector3.zero;
 	// Use this for initialization
 	void Start () {
-		currentPosition = 0;
 		transform.position =  new Vector3(positions[currentPosition].gameObject.transform.position.x,
 										  transform.position.y,
 									   	  positions[currentPosition].gameObject.transform.position.z);
