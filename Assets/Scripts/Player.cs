@@ -4,8 +4,9 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public GameObject[] positions;
-	public int currentPosition;
+	public int currentPosition = 0;
 	Vector3 velocity = Vector3.zero;
+	int totalMoney = 3000;
 	// Use this for initialization
 	void Start () {
 		transform.position =  new Vector3(positions[currentPosition].gameObject.transform.position.x,
@@ -20,19 +21,20 @@ public class Player : MonoBehaviour {
 		transform.position = Vector3.SmoothDamp (transform.position,newPosition,ref velocity,0.3f);
 	}
 
-	public void Move()
+	public int Move()
 	{
 		
 		currentPosition += Roll();
 		if (currentPosition >= positions.Length) {
-			currentPosition = 0;
+			currentPosition -= 36;
 		}
-
+		Debug.Log ("CurrentPosition: "+currentPosition);
+		return currentPosition;
 	}
 
 	private int Roll(){
 		int value = Random.Range (1, 7);
-		Debug.Log (value);
+		Debug.Log ("Rolled: "+value);
 		return value;
 	}
 
@@ -43,12 +45,24 @@ public class Player : MonoBehaviour {
 	public void CollectRent(){
 		Debug.Log("Rent Collected");
 	}
+		
 
-	public void TakeTurn(){
-		Debug.Log("Taking my Turn");
-		Move ();
-		TakeChip ();
-
+	public int GetTotalMoney(){
+		return totalMoney;
 	}
 
+	public void CollectMoney(int moneyCollected){
+		Debug.Log("CollectMoney");
+		totalMoney += moneyCollected;
+	}
+
+	public void PayRent(int rentAmount){
+		Debug.Log("PayRent");
+		totalMoney -= rentAmount;
+	}
+
+	public void PayAuction(int auctionAmount){
+		Debug.Log("PayAuction");
+		totalMoney -= auctionAmount;
+	}
 }

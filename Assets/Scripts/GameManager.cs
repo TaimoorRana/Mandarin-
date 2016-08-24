@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 	public Player[] players;
 	int currentPlayer = 0;
 	bool gameOver = false;
+	const int moneyLandValue = 100;
+
 	// Use this for initialization
 	void Start () {
 
@@ -21,7 +23,12 @@ public class GameManager : MonoBehaviour {
 		if (currentPlayer >= players.Length) {
 			currentPlayer = 0;
 		}
-		players[currentPlayer].TakeTurn ();
+		players[currentPlayer].Move();
+		if (players [currentPlayer].currentPosition % 3 == 1) {
+			players [currentPlayer].CollectMoney (moneyLandValue);
+		} else {
+			players [currentPlayer].TakeChip ();
+		}
 		currentPlayer++;
 	}
 }
