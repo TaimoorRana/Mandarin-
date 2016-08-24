@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
 		transform.position =  new Vector3(positions[currentPosition].gameObject.transform.position.x,
 										  transform.position.y,
 									   	  positions[currentPosition].gameObject.transform.position.z);
-		InvokeRepeating ("move", 2, 2.0f);
+		//InvokeRepeating ("Move", 2, 2.0f);
 	}
 
 	// Update is called once per frame
@@ -20,19 +20,35 @@ public class Player : MonoBehaviour {
 		transform.position = Vector3.SmoothDamp (transform.position,newPosition,ref velocity,0.3f);
 	}
 
-	void move()
+	public void Move()
 	{
 		
-		currentPosition += roll();
+		currentPosition += Roll();
 		if (currentPosition >= positions.Length) {
 			currentPosition = 0;
 		}
 
 	}
 
-	int roll(){
+	private int Roll(){
 		int value = Random.Range (1, 7);
 		Debug.Log (value);
 		return value;
 	}
+
+	public void TakeChip(){
+		Debug.Log("Chip Collected");
+	}
+
+	public void CollectRent(){
+		Debug.Log("Rent Collected");
+	}
+
+	public void TakeTurn(){
+		Debug.Log("Taking my Turn");
+		Move ();
+		TakeChip ();
+
+	}
+
 }
