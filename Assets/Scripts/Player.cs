@@ -3,40 +3,44 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public GameObject[] positions;
-	public int currentPosition = 0;
+
 	Vector3 velocity = Vector3.zero;
 	int totalMoney = 3000;
+	public Transform startPosition;
+	public int positionNumber = 0;
+	Transform currentPosition;
+
 	// Use this for initialization
 	void Start () {
-		transform.position =  new Vector3(positions[currentPosition].gameObject.transform.position.x,
-										  transform.position.y,
-									   	  positions[currentPosition].gameObject.transform.position.z);
-		//InvokeRepeating ("Move", 2, 2.0f);
+		transform.position = startPosition.position;
+		currentPosition = startPosition;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		Vector3 newPosition = new Vector3(positions[currentPosition].gameObject.transform.position.x, transform.position.y, positions[currentPosition].gameObject.transform.position.z);
+		Vector3 newPosition = new Vector3(currentPosition.position.x, transform.position.y, currentPosition.position.z);
 		transform.position = Vector3.SmoothDamp (transform.position,newPosition,ref velocity,0.3f);
 	}
 
-	public int Move()
+	public void Move(Transform newPosition)
 	{
-		
+		currentPosition = newPosition;
+
+		/*
 		currentPosition += Roll();
 		if (currentPosition >= positions.Length) {
 			currentPosition -= 36;
 		}
 		Debug.Log ("CurrentPosition: "+currentPosition);
-		return currentPosition;
+		*/
+
+
+	
 	}
 
-	private int Roll(){
-		int value = Random.Range (1, 7);
-		Debug.Log ("Rolled: "+value);
-		return value;
-	}
+
+
+
 
 	public void TakeChip(){
 		Debug.Log("Chip Collected");
