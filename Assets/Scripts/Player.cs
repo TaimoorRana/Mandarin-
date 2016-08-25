@@ -12,8 +12,9 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		transform.position = startPosition.position;
+		
 		currentPosition = startPosition;
+		transform.position = new Vector3(startPosition.position.x,transform.position.y, startPosition.position.z );
 	}
 
 	// Update is called once per frame
@@ -26,22 +27,8 @@ public class Player : MonoBehaviour {
 	{
 		currentPosition = newPosition;
 
-		/*
-		currentPosition += Roll();
-		if (currentPosition >= positions.Length) {
-			currentPosition -= 36;
-		}
-		Debug.Log ("CurrentPosition: "+currentPosition);
-		*/
-
-
-	
 	}
-
-
-
-
-
+		
 	public void TakeChip(){
 		Debug.Log("Chip Collected");
 	}
