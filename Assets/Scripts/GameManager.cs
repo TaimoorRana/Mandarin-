@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject[] players;
 	public Transform[] locations;
+	public Chip[] chips;
 	int currentPlayer = 0;
 	bool gameOver = false;
 	const int moneyLandValue = 100;
@@ -52,7 +53,10 @@ public class GameManager : MonoBehaviour {
 			if (playerNewPosition % 3 == 1) {
 				players [currentPlayer].GetComponent<Player> ().CollectMoney (moneyLandValue);
 			} else {
-				players [currentPlayer].GetComponent<Player> ().TakeChip ();
+				// get chip
+
+				Chip chip = new Chip();
+				players [currentPlayer].GetComponent<Player> ().TakeChip (chip);
 			}
 		} else {
 			Debug.Log("Collecting chip from PLAYER");
@@ -85,4 +89,6 @@ public class GameManager : MonoBehaviour {
 
 		return playerNewPosition;
 	}
+
+
 }

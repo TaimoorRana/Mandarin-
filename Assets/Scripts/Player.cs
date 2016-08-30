@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	public Transform startPosition;
 	public int positionNumber = 0;
 	Transform currentPosition;
+	GameBoard gameboard;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +30,8 @@ public class Player : MonoBehaviour {
 
 	}
 		
-	public void TakeChip(){
+	public void TakeChip(Chip chip){
+		gameboard.addChip (chip);
 		Debug.Log("Chip Collected");
 	}
 
