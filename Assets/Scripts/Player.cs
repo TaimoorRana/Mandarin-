@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		gameboard = new GameBoard ();
 		currentPosition = startPosition;
 		transform.position = new Vector3(startPosition.position.x,transform.position.y, startPosition.position.z );
 	}

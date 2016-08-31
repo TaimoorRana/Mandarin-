@@ -8,6 +8,7 @@ public class Chip : MonoBehaviour {
 	string color;
 	[SerializeField]
 	bool crown;
+	bool faceDown;
 	private string ownerName = "";
 
 	// Use this for initialization

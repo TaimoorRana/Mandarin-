@@ -10,7 +10,7 @@ public class GameBoard : MonoBehaviour {
 	void Start () {
 		
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -18,5 +18,7 @@ public class GameBoard : MonoBehaviour {
 
 	public void addChip(Chip chip){
 		chips.Add (chip);
+		string str = string.Concat("got ",chip.getColor()," ",chip.getName());
+		Debug.Log (str);
 	}
 }

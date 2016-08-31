@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
 	public GameObject[] players;
 	public Transform[] locations;
-	public Chip[] chips;
+	public List<Chip> unassignedChips;
+	public List<Chip> assignedChips;
 	int currentPlayer = 0;
-	bool gameOver = false;
 	const int moneyLandValue = 100;
 	bool passedAPlayer = false;
 
@@ -54,8 +55,7 @@ public class GameManager : MonoBehaviour {
 				players [currentPlayer].GetComponent<Player> ().CollectMoney (moneyLandValue);
 			} else {
 				// get chip
-
-				Chip chip = new Chip();
+				Chip chip = getRandomChip();
 				players [currentPlayer].GetComponent<Player> ().TakeChip (chip);
 			}
 		} else {
@@ -90,5 +90,12 @@ public class GameManager : MonoBehaviour {
 		return playerNewPosition;
 	}
 
+	private Chip getRandomChip(){
+		int value = Random.Range (0, unassignedChips.Count);
+
+		assignedChips.Add (unassignedChips[value]);
+		unassignedChips.Remove (unassignedChips [value]);
+		return assignedChips[assignedChips.Count - 1];
+	}
 
 }
