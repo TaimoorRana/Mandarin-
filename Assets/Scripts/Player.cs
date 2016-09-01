@@ -9,11 +9,11 @@ public class Player : MonoBehaviour {
 	public Transform startPosition;
 	public int positionNumber = 0;
 	Transform currentPosition;
-	GameBoard gameboard;
+	PlayerBoard gameboard;
 
 	// Use this for initialization
 	void Start () {
-		gameboard = new GameBoard ();
+		gameboard = new PlayerBoard ();
 		currentPosition = startPosition;
 		transform.position = new Vector3(startPosition.position.x,transform.position.y, startPosition.position.z );
 	}
