@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	public Transform startPosition;
 	public int positionNumber = 0;
 	Transform currentPosition;
+	[SerializeField]
 	PlayerBoard gameboard;
 
 	// Use this for initialization
