@@ -9,6 +9,8 @@ public class Chip : MonoBehaviour {
 	[SerializeField]
 	bool crown;
 	bool faceDown;
+	[SerializeField]
+	public int boardPosition;
 	private string ownerName = "";
 
 	// Use this for initialization
