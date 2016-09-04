@@ -55,8 +55,13 @@ public class GameManager : MonoBehaviour {
 				players [currentPlayer].GetComponent<Player> ().CollectMoney (moneyLandValue);
 			} else {
 				// get chip
-				Chip chip = getRandomChip();
-				players [currentPlayer].GetComponent<Player> ().TakeChip (chip);
+				if (unassignedChips.Count != 0) {
+					Chip chip = getRandomChip ();
+					players [currentPlayer].GetComponent<Player> ().TakeChip (chip);
+				} else {
+					Debug.Log("No More Chips");
+				}
+
 			}
 		} else {
 			Debug.Log("Collecting chip from PLAYER");
